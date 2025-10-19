@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6kqtcbku1k5e"]
+
+[ext_resource type="Script" uid="uid://dklvmjf1pro2" path="res://SCENES/MAIN/main_menu.gd" id="1_0vjco"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7nob"]
+bg_color = Color(0.154876, 0.154876, 0.154876, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0vjco")
+
+[node name="TitlePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -437.0
+offset_top = 100.0
+offset_right = 437.0
+offset_bottom = 306.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y7nob")
+
+[node name="Label" type="Label" parent="TitlePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Chemical Simulator"
+
+[node name="ButtonPanels" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.5
+offset_top = -40.0
+offset_right = 270.5
+offset_bottom = 233.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SimulatorButton" type="Button" parent="ButtonPanels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Simulator"
+
+[node name="RendererButton" type="Button" parent="ButtonPanels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 5.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Renderer"
+
+[connection signal="pressed" from="ButtonPanels/SimulatorButton" to="." method="_on_simulator_button_pressed"]
+[connection signal="pressed" from="ButtonPanels/RendererButton" to="." method="_on_renderer_button_pressed"]

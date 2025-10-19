@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=4 uid="uid://chv8hq1tk7hpj"]
+
+[sub_resource type="Environment" id="Environment_kx3n2"]
+background_energy_multiplier = 0.52
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kx3n2"]
+albedo_color = Color(2, 2, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kx3n2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7o3x2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8j7c2"]
+size = Vector3(200, 200, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j7c2"]
+albedo_color = Color(0.847656, 0.850037, 1, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kx3n2"]
+_surfaces = [{
+"aabb": AABB(-100.029, -100.029, -100.029, 200.058, 200.058, 200.058),
+"attribute_data": PackedByteArray("AAAAAAAAAACrqio/AAAAAKuqqj4AAAAAAACAPwAAAAAAAAAAAAAAP6uqKj8AAAA/q6qqPgAAAD8AAIA/AAAAP6uqqj4AAAAAAAAAAAAAAD+rqio/AAAAAKuqqj4AAAA/q6qqPgAAAD8AAAAAAACAP6uqKj8AAAA/q6qqPgAAgD+rqqo+AAAAP6uqKj8AAAA/q6oqPwAAAD8AAIA/AAAAP6uqqj4AAIA/q6oqPwAAgD+rqio/AACAPwAAgD8AAIA/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAAEAAIAAgAEAAYAAQAFAAMAAwAFAAcACAAMAAoACgAMAA4ACQANAAsACwANAA8AEAAUABIAEgAUABYAEQAVABMAEwAVABcA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("yA7IwsgOyELIDshCyA7IQsgOyELIDsjCyA7IQsgOyELIDshCyA7IwsgOyELIDsjCyA7IwsgOyMLIDshCyA7IQsgOyMLIDsjCyA7IQsgOyMLIDshCyA7IwsgOyMLIDsjCyA7IQsgOyELIDshCyA7IwsgOyELIDsjCyA7IQsgOyELIDsjCyA7IwsgOyELIDshCyA7IQsgOyMLIDshCyA7IwsgOyMLIDsjCyA7IQsgOyMLIDsjCyA7IwsgOyMLIDshCyA7IQsgOyELIDshCyA7IwsgOyMLIDshCyA7IwsgOyELIDshCyA7IQsgOyMLIDshCyA7IQsgOyELIDsjCyA7IwsgOyMLIDsjCyA7IwsgOyELIDsjCyA7IQsgOyMLIDsjC/3//f////7//////AAD/v/9//3////+//////wAA/7//f/9/////v/////8AAP+//3//f////7//////AAD/v///AID/////AAAAgP9//7///wCA/////wAAAID/f/+///8AgP////8AAACA/3//v///AID/////AAAAgP9//78AgP//AAD/vwCAAAD///+/AID//wAA/78AgAAA////vwCA//8AAP+/AIAAAP///78AgP//AAD/vwCAAAD///+/")
+}]
+
+[node name="SimViewer" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kx3n2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.988641, 0.150295, 0, -0.150295, 0.988641, 0, 3.20829, 0)
+material_override = SubResource("StandardMaterial3D_kx3n2")
+mesh = SubResource("BoxMesh_kx3n2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.845458, -0.254143, 0.469694, 0, 0.879507, 0.475885, -0.534043, -0.402341, 0.743586, 3.67365, 3.66475, 4.21119)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
+omni_range = 6.39244
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 54.4479, -30)
+visible = false
+directional_shadow_mode = 0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_7o3x2")
+mesh = SubResource("BoxMesh_8j7c2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_8j7c2")
+mesh = SubResource("ArrayMesh_kx3n2")
+skeleton = NodePath("../MeshInstance3D2")
