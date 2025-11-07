@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://cc0nvyvk2j0p3"]
+[gd_scene load_steps=2 format=3 uid="uid://cc0nvyvk2j0p3"]
 
-[node name="Simulator" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[ext_resource type="Script" uid="uid://cto1pddcthfok" path="res://SCENES/SIMULATOR/simulator.gd" id="1_mdtgl"]
+
+[node name="Simulator" type="Node"]
+script = ExtResource("1_mdtgl")

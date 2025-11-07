@@ -24,9 +24,9 @@ func instantiate_element_buttons():
 	for name in element_names:
 		elements.add_child(make_button(name, b_size))
 
-func make_button(name : String, min_size : Vector2) -> Button:
+func make_button(namei : String, min_size : Vector2) -> Button:
 	var b := Button.new()
-	b.text = name
+	b.text = namei
 	b.custom_minimum_size = min_size
 	return b
 
@@ -40,3 +40,7 @@ func make_spacer(min_size : Vector2) -> Variant:
 
 func _on_back_button_pressed() -> void:
 	SceneSwitcher.goto_scene(MAIN_MENU)
+
+
+func _on_simulate_button_pressed() -> void:
+	$Simulator.running_simulation = true

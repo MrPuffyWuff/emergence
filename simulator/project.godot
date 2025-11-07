@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneSwitcher="*res://SCENES/GLOBALS/scene_switcher.gd"
+GlobalsVars="*res://SCENES/GLOBALS/globals_vars.gd"
 
 [display]
 
