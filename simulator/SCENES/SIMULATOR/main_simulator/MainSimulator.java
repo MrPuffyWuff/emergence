@@ -6,24 +6,32 @@ public class MainSimulator
 {   
    private boolean isSimulationRunning;
    
+   // private Particle[] particles= {
+//          //A bunch of cool protons
+//          new Particle(new Vector3(0,0,0), 1, 1836.15),
+//          new Particle(new Vector3(1,0,0), 1, 1836.15),
+//          new Particle(new Vector3(0,0,1), 1, 1836.15),
+//          new Particle(new Vector3(0,2,0), 1, 1836.15),
+//          new Particle(new Vector3(3,1.5,4), 1, 1836.15),
+//          //A bunch of cool electrons
+//          new Particle(new Vector3(-0.67,1,0), -1, 1),//youre welcome pranav
+//          new Particle(new Vector3(0,-1,0), -1, 1),
+//          new Particle(new Vector3(1,3,0), -1, 1),
+//          new Particle(new Vector3(-2,0,1), -1, 1),
+//       };
    private Particle[] particles= {
          //A bunch of cool protons
          new Particle(new Vector3(0,0,0), 1, 1836.15),
-         new Particle(new Vector3(1,0,0), 1, 1836.15),
-         new Particle(new Vector3(0,0,1), 1, 1836.15),
-         new Particle(new Vector3(0,2,0), 1, 1836.15),
-         new Particle(new Vector3(3,1.5,4), 1, 1836.15),
          //A bunch of cool electrons
-         new Particle(new Vector3(-0.67,1,0), -1, 1),//youre welcome pranav
-         new Particle(new Vector3(0,-1,0), -1, 1),
-         new Particle(new Vector3(1,3,0), -1, 1),
-         new Particle(new Vector3(-2,0,1), -1, 1),
+         new Particle(new Vector3(0,5,0), -1, 1836.15)
       };
    
    private String output;
    
    private int frame;
    private int totalFrames;
+   
+   private double time_step = 0.5;
    
    
    public MainSimulator(){
@@ -32,6 +40,7 @@ public class MainSimulator
       frame = 0;
       totalFrames = 1000;
       output = "Simulation_ID-0_NAME-TEST\n";
+      output += "Particle Count: " + particles.length + "\n";
       //particles = new Particle[0];
       saveFrame();
    }
@@ -81,7 +90,7 @@ public class MainSimulator
    {  
       int q1 = aPart.getCharge();
       int q2 = bPart.getCharge();
-      Vector3 aToBVec = Vector3.subtract(bPart.getPosition(), aPart.getPosition());
+      Vector3 aToBVec = Vector3.subtract(aPart.getPosition(), bPart.getPosition());
       double r2 = aToBVec.lengthSquared();
       //Coulombs equation of C*(q1*q2)/r^2
       //C = 1 due to unit shenanigans
@@ -91,20 +100,18 @@ public class MainSimulator
       Vector3 forceApplied = aToBVec.normalized().scale(force);
       //due to units, the force is the unit of Dalton * (Bhors Radii / ATU^2)
       //Thus, you must multiply force by ATU and divide by Dalton to get the deltaV
-      //Every frame is 1 ATU, so you only need to divide by the Dalton (mass)
-      Vector3 deltaV = forceApplied.divide(aPart.getMass());
+      Vector3 deltaV = forceApplied.divide(aPart.getMass()).scale(time_step);
       aPart.setVelocity( Vector3.add(aPart.getVelocity(), deltaV) );
    }
    
    public void saveFrame()
    {
-      output += "[";
       for (Particle p : particles)
       {
          output += p;
-         output += ", ";
+         output += ",";
       }
-      output += "]\n";
+      output += "\n";
    }
 
 }

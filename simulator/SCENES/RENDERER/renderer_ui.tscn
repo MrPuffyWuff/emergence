@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://cw8exqfcgtmm0"]
+[gd_scene load_steps=3 format=3 uid="uid://cw8exqfcgtmm0"]
+
+[ext_resource type="Script" uid="uid://b5681h37bjo3b" path="res://SCENES/RENDERER/renderer_ui.gd" id="1_qa54b"]
+[ext_resource type="PackedScene" uid="uid://ij7636l2br8j" path="res://SCENES/RENDERER/rend_3d_viewer.tscn" id="2_1vw3y"]
 
 [node name="RendererUi" type="Control"]
 layout_mode = 3
@@ -7,3 +10,78 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qa54b")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -970.0
+offset_top = -377.5
+offset_right = -100.0
+offset_bottom = 377.5
+grow_horizontal = 0
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(870, 755)
+render_target_update_mode = 4
+
+[node name="Rend3dViewer" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_1vw3y")]
+
+[node name="FileDialogButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 77.0
+offset_right = 294.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 24
+text = "Select File"
+
+[node name="CurrentFileLabel" type="Label" parent="FileDialogButton"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 11.0
+offset_top = -26.5
+offset_right = 645.0
+offset_bottom = 93.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Current File Open: "
+autowrap_mode = 1
+
+[node name="FileDialog" type="FileDialog" parent="."]
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+access = 2
+
+[node name="FrameSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 173.0
+offset_right = 627.0
+offset_bottom = 216.0
+scrollable = false
+tick_count = 10
+ticks_position = 3
+
+[connection signal="pressed" from="FileDialogButton" to="." method="_on_file_dialog_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

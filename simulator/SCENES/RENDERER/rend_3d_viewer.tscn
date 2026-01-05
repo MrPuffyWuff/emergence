@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ij7636l2br8j"]
+
+[ext_resource type="Script" uid="uid://brqb0ibma6xin" path="res://SCENES/RENDERER/rend_3d_viewer.gd" id="1_554wj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_554wj"]
+size = Vector2(100, 100)
+
+[node name="Rend3dViewer" type="Node3D"]
+script = ExtResource("1_554wj")
+
+[node name="Particles" type="Node3D" parent="."]
+
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+mesh = SubResource("PlaneMesh_554wj")

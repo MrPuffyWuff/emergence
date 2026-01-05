@@ -4,7 +4,6 @@ func goto_scene(scene: PackedScene):
 	deferred_goto_scene.call_deferred(scene)
 
 func deferred_goto_scene(scene: PackedScene):
-	print(scene)
 	var new_scene = scene.instantiate()
 	
 	var tree_ref = get_tree()

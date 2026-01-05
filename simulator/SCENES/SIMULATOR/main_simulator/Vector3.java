@@ -44,7 +44,7 @@ public class Vector3
    
    public String toString()
    {
-      return "<Vector-" + "x: " + x + " y: " + y + " z: " + z + ">";
+      return "<" + x + ", " + y + ", " + z + ">";
    }
    
 }

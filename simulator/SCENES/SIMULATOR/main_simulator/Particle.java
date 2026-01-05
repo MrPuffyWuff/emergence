@@ -21,7 +21,7 @@ public class Particle
    }
    
    public double getMass(){
-      return charge;
+      return mass;
    }
    
    public Vector3 getVelocity(){
