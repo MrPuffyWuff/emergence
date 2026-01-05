@@ -2,9 +2,9 @@ extends Node3D
 
 class_name Particle
 
-const ELECTRON_CHARGE := -1.602 * 10**-19
+const ELECTRON_CHARGE : float = -1.602 * 10**-19
 const NEUTRON_CHARGE := 0
-const PROTON_CHARGE := 1.602 * 10**-19
+const PROTON_CHARGE  : float = 1.602 * 10**-19
 
 const ELECTRON_MASS := 9.109 * 10**-31
 const NEUTRON_MASS := 1.675 * 10**-27
@@ -28,6 +28,4 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _to_string() -> String:
-	if is_nan(position.x):
-		print("Error! Value is: " + str(position.x))
-	return "<Particle-ID: " + str(id) + " Position: " + str(position) + " Velocity: " + str(velocity) + ">"
+	return "<Particle-ID: " + str(id) + " Position: " + str(position) + " Velocity: " + str(velocity) + " Mass: " + str(mass) + ">"

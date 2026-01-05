@@ -55,16 +55,17 @@ func save_frame():
 	output_string += "]\n"
 
 func apply_coulombs_force(a_part : Particle, b_part : Particle) -> void:
+	print(10**18)
+	print(10**19)
+	print(10**20)
 	var q1 : float = a_part.charge
 	var q2 : float = b_part.charge
 	var a_to_b_vec : Vector3 = b_part.position - a_part.position
 	var r2 : float = (b_part.position - a_part.position).length_squared()
 	var force := COULOMBS_CONSTANT * q1 * q2 / r2
 	var force_applied : Vector3 = a_to_b_vec.normalized() * force
-	print(force_applied)
 	var delta_v :=  force_applied * GlobalsVars.TIME_STEP / a_part.mass
 	a_part.velocity = a_part.velocity + delta_v
-	print(delta_v)
 
 func apply_gravitational_force(a_part : Particle, b_part : Particle) -> void:
 	var m1 : float = a_part.mass
