@@ -16,6 +16,14 @@ public class Particle
       velocity = new Vector3(0, 0, 0);
    }
    
+   public Particle(Vector3 poz, Vector3 vel, int chargeI, double massI)
+   {
+      position = poz;
+      charge = chargeI;
+      mass = massI;
+      velocity = vel;
+   }
+   
    public int getCharge(){
       return charge;
    }
@@ -42,7 +50,7 @@ public class Particle
    
    public String toString()
    {
-      return "<Particle-" + "Position: " + position + " Velocity: " + velocity + " Mass: " + mass + ">";
+      return position + "_" + velocity + "_" + mass + "_" + charge;
    }
 
 }

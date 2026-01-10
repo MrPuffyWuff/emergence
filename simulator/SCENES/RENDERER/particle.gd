@@ -1,7 +1,19 @@
 extends Node3D
 
+class_name Particle
+
 var rng = RandomNumberGenerator.new()
+
+var colors : Dictionary[float, Color] = {
+	1.0 : Color(1.0, 0.0, 0.0, 1.0),
+	0.0 : Color(0.461, 0.461, 0.461, 1.0),
+	-1.0 : Color(0.421, 0.558, 0.719, 1.0)
+}
+
+var cur_color : Color = colors[0]
 
 func _ready() -> void:
 	$MeshInstance3D.material_override = StandardMaterial3D.new()
-	$MeshInstance3D.material_override.albedo_color = Color(rng.randf(), rng.randf(), rng.randf())
+
+func _process(delta: float) -> void:
+	$MeshInstance3D.material_override.albedo_color = cur_color

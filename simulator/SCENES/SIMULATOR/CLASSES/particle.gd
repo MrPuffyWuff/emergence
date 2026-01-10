@@ -1,6 +1,6 @@
 extends Node3D
 
-class_name Particle
+
 
 const ELECTRON_CHARGE : float = -1.602 * 10**-19
 const NEUTRON_CHARGE := 0

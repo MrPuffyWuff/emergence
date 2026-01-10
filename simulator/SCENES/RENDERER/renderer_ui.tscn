@@ -83,5 +83,14 @@ scrollable = false
 tick_count = 10
 ticks_position = 3
 
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 220.0
+offset_right = 128.0
+offset_bottom = 271.0
+toggle_mode = true
+text = ">"
+
 [connection signal="pressed" from="FileDialogButton" to="." method="_on_file_dialog_button_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

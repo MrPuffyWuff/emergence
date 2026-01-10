@@ -27,10 +27,12 @@ func _process(delta: float) -> void:
 	if cur_frame != prev_frame:
 		prev_frame = cur_frame
 		display_frame(cur_frame)
+	
+	if $PlayButton.button_pressed:
+		$FrameSlider.value += delta
 
 func _on_file_dialog_button_pressed() -> void:
 	$FileDialog.popup()
-
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	var file = FileAccess.open(path, FileAccess.READ)
@@ -41,21 +43,17 @@ func _on_file_dialog_file_selected(path: String) -> void:
 
 func display_frame(frame : int):
 	var data : String = frames.get(frame)
-	print(data)
-	var particles = data.split(">,", false, number_of_particles)
+	var particles := data.split(";", false, number_of_particles)
 	for i in range(number_of_particles):
-		var part_data = particles.get(i).split(": ", false)
-		print(part_data)
-		var raw_poz_str : String = part_data.get(1)# <0.0, 0.0, 0.0> Velocity
-		print(raw_poz_str)
-		var poz_str := raw_poz_str.split("> Velocity").get(0).substr(1)# 0.0, 0.0, 0.0
-		print(poz_str)
-		var poz_array = poz_str.split(", ")
-		var particle = particles_parent.get_child(i)
-		particle.position = Vector3(float(poz_array.get(0)), float(poz_array.get(1)), float(poz_array.get(2)))
+		var p_parts := particles[i].split("_")
+		var vel_str := p_parts[0].split(",")
+		var p : Particle = particles_parent.get_child(i)
+		p.position = Vector3(float(vel_str[0]),float(vel_str[1]),float(vel_str[2]))
+		p.cur_color = p.colors[float(p_parts[3])]
 
 func initial_content_scrape():
 	frames = content.split("\n")
+	print(len(frames))
 	title = frames.get(0)
 	frames.remove_at(0)# Remove Title
 	var info_line = frames.get(0)
@@ -67,6 +65,6 @@ func initial_content_scrape():
 		var instance = PARTICLE.instantiate()
 		particles_parent.add_child(instance)
 	frames.remove_at(0)# Remove Info Line
-	$FrameSlider.max_value = len(frames)
+	$FrameSlider.max_value = len(frames) - 2
 	can_render = true
 	display_frame(0)

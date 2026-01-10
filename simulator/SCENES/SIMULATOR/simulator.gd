@@ -5,10 +5,14 @@ const GRAVITATIONAL_CONSTANT := 6.67430 * 10**-11
 
 var running_simulation : bool = false
 
-var particles : Array[Particle] = [
+var particles : Array[Particle]
+
+'''
+ = [
 	Particle.new(Vector3(0,0,0), Particle.PROTON_CHARGE, Particle.PROTON_MASS),
 	Particle.new(Vector3(0,1,0), Particle.ELECTRON_CHARGE, Particle.ELECTRON_MASS),
 ]
+'''
 
 var output_string : String = ""
 
@@ -64,8 +68,8 @@ func apply_coulombs_force(a_part : Particle, b_part : Particle) -> void:
 	var r2 : float = (b_part.position - a_part.position).length_squared()
 	var force := COULOMBS_CONSTANT * q1 * q2 / r2
 	var force_applied : Vector3 = a_to_b_vec.normalized() * force
-	var delta_v :=  force_applied * GlobalsVars.TIME_STEP / a_part.mass
-	a_part.velocity = a_part.velocity + delta_v
+	#var delta_v :=  force_applied * GlobalsVars.TIME_STEP / a_part.mass
+	#a_part.velocity = a_part.velocity + delta_v
 
 func apply_gravitational_force(a_part : Particle, b_part : Particle) -> void:
 	var m1 : float = a_part.mass
@@ -74,6 +78,6 @@ func apply_gravitational_force(a_part : Particle, b_part : Particle) -> void:
 	var r2 : float = (b_part.position - a_part.position).length_squared()
 	var force := GRAVITATIONAL_CONSTANT * m1 * m2 / r2
 	var force_applied : Vector3 = a_to_b_vec.normalized() * force
-	var delta_v :=  force_applied * GlobalsVars.TIME_STEP / a_part.mass
-	a_part.velocity = a_part.velocity + delta_v
+	#var delta_v :=  force_applied * GlobalsVars.TIME_STEP / a_part.mass
+	#a_part.velocity = a_part.velocity + delta_v
 	

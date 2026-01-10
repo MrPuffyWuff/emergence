@@ -6,6 +6,34 @@ public class MainSimulator
 {   
    private boolean isSimulationRunning;
    
+   
+   /*
+   -4.628479065018875,3.850784975503889,-3.002066964447845
+   2.959501958800951,-2.36544618482435,4.281158133123059
+   3.952869622835547,-2.3956209043177976,-4.972019229326341
+   4.075350237500928,4.833801528609148,-2.187800737523783
+   4.342427159232962,4.9799714873239544,4.4302788597549405
+   2.7775878142603094,3.0304330438035225,-3.410322063669639
+   -2.119657671184083,2.556060776787863,-2.8071947663585766
+   4.1850114122750925,4.735447382481818,-2.70058368078442
+   3.68060212647632,-3.954278925614492,2.5315026978249686
+   3.199857034035543,-2.8076525393431813,-4.536474711805448
+   */
+   private Particle[] particles= {
+         //A cool protons
+         new Particle(new Vector3(0,0,0), 2*1, 2*1836.15 + 2*1838.68),//Helium 
+         //A bunch of cool electrons
+         new Particle(new Vector3(-4.628479065018875,3.850784975503889,-3.002066964447845), -1, 1),//youre welcome pranav
+         new Particle(new Vector3(2.959501958800951,-2.36544618482435,4.281158133123059), -1, 1),
+         new Particle(new Vector3(3.952869622835547,-2.3956209043177976,-4.972019229326341), -1, 1),
+         new Particle(new Vector3(4.075350237500928,4.833801528609148,-2.187800737523783), -1, 1),
+         new Particle(new Vector3(4.342427159232962,4.9799714873239544,4.4302788597549405), -1, 1),
+         new Particle(new Vector3(2.7775878142603094,3.0304330438035225,-3.410322063669639), -1, 1),
+         new Particle(new Vector3(-2.119657671184083,2.556060776787863,-2.8071947663585766), -1, 1),
+         new Particle(new Vector3(4.1850114122750925,4.735447382481818,-2.70058368078442), -1, 1),
+         new Particle(new Vector3(3.68060212647632,-3.954278925614492,2.5315026978249686), -1, 1),
+         new Particle(new Vector3(3.199857034035543,-2.8076525393431813,-4.536474711805448), -1, 1),
+      };
    // private Particle[] particles= {
 //          //A bunch of cool protons
 //          new Particle(new Vector3(0,0,0), 1, 1836.15),
@@ -14,31 +42,44 @@ public class MainSimulator
 //          new Particle(new Vector3(0,2,0), 1, 1836.15),
 //          new Particle(new Vector3(3,1.5,4), 1, 1836.15),
 //          //A bunch of cool electrons
-//          new Particle(new Vector3(-0.67,1,0), -1, 1),//youre welcome pranav
-//          new Particle(new Vector3(0,-1,0), -1, 1),
-//          new Particle(new Vector3(1,3,0), -1, 1),
-//          new Particle(new Vector3(-2,0,1), -1, 1),
+//          new Particle(new Vector3(-0.67,1,0), -1, 1836.15),//youre welcome pranav
+//          new Particle(new Vector3(0,-1,0), -1, 1836.15),
+//          new Particle(new Vector3(1,3,0), -1, 1836.15),
+//          new Particle(new Vector3(-2,0,1), -1, 1836.15),
 //       };
-   private Particle[] particles= {
-         //A bunch of cool protons
-         new Particle(new Vector3(0,0,0), 1, 1836.15),
-         //A bunch of cool electrons
-         new Particle(new Vector3(0,5,0), -1, 1836.15)
-      };
+    // private Particle[] particles= {
+//          //A bunch of cool protons
+//          new Particle(new Vector3(0,0,0), 1, 1836.15),
+//          new Particle(new Vector3(3,0,0), 1, 1836.15),
+//          new Particle(new Vector3(0,0,3), 1, 1836.15),
+//          new Particle(new Vector3(0,3,0), 1, 1836.15),
+//          new Particle(new Vector3(9,4.5,12), 1, 1836.15),
+//          //A bunch of cool electrons
+//          new Particle(new Vector3(-2,3,0), -1, 1),//youre welcome pranav
+//          new Particle(new Vector3(0,-3,0), -1, 1),
+//          new Particle(new Vector3(3,9,0), -1, 1),
+//          new Particle(new Vector3(-6,0,3), -1, 1),
+//       };
+   // private Particle[] particles= {
+//          //A bunch of cool protons
+//          new Particle(new Vector3(0,1,0), 1, 1836.15),
+//          //A bunch of cool electrons
+//          new Particle(new Vector3(0,1,1), new Vector3(0,0.01,0), -1, 1)
+//       };
    
    private String output;
    
    private int frame;
    private int totalFrames;
    
-   private double time_step = 0.5;
+   private double time_step = 0.01;
    
    
    public MainSimulator(){
       //Save initial frame
       isSimulationRunning = true;
       frame = 0;
-      totalFrames = 1000;
+      totalFrames = 8000;
       output = "Simulation_ID-0_NAME-TEST\n";
       output += "Particle Count: " + particles.length + "\n";
       //particles = new Particle[0];
@@ -81,7 +122,7 @@ public class MainSimulator
             }
          }
          else if (frame % 10 == 0){
-            System.out.println(frame / (float)(totalFrames) + "% Complete");
+            System.out.println(frame / (float)(totalFrames) + " Complete");
          }
       }
    }
@@ -109,7 +150,7 @@ public class MainSimulator
       for (Particle p : particles)
       {
          output += p;
-         output += ",";
+         output += ";";
       }
       output += "\n";
    }
