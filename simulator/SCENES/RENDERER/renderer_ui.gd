@@ -20,6 +20,9 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
+	render_frames(delta)
+
+func render_frames(delta : float):
 	if not can_render: return
 	
 	var cur_frame : int = int($FrameSlider.value)
@@ -49,7 +52,11 @@ func display_frame(frame : int):
 		var vel_str := p_parts[0].split(",")
 		var p : Particle = particles_parent.get_child(i)
 		p.position = Vector3(float(vel_str[0]),float(vel_str[1]),float(vel_str[2]))
-		p.cur_color = p.colors[float(p_parts[3])]
+		var charge = float(p_parts[3])
+		if charge in p.colors:
+			p.cur_color = p.colors[float(p_parts[3])]
+		else:
+			p.cur_color = Color(1.0, 0.0, 0.0, 1.0)
 
 func initial_content_scrape():
 	frames = content.split("\n")

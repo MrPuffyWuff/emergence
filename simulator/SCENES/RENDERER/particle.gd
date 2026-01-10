@@ -5,7 +5,6 @@ class_name Particle
 var rng = RandomNumberGenerator.new()
 
 var colors : Dictionary[float, Color] = {
-	1.0 : Color(1.0, 0.0, 0.0, 1.0),
 	0.0 : Color(0.461, 0.461, 0.461, 1.0),
 	-1.0 : Color(0.421, 0.558, 0.719, 1.0)
 }

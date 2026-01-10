@@ -21,18 +21,14 @@ public class MainSimulator
    */
    private Particle[] particles= {
          //A cool protons
-         new Particle(new Vector3(0,0,0), 2*1, 2*1836.15 + 2*1838.68),//Helium 
+         new Particle(new Vector3(-6,0,0),new Vector3(0,0,0.01), 1, 1*1836.15 + 0*1838.68),//Hydrogen
+         new Particle(new Vector3(6,0,0),new Vector3(0,0,0.01), 1, 1*1836.15 + 0*1838.68),//Hydrogen 
          //A bunch of cool electrons
-         new Particle(new Vector3(-4.628479065018875,3.850784975503889,-3.002066964447845), -1, 1),//youre welcome pranav
-         new Particle(new Vector3(2.959501958800951,-2.36544618482435,4.281158133123059), -1, 1),
-         new Particle(new Vector3(3.952869622835547,-2.3956209043177976,-4.972019229326341), -1, 1),
-         new Particle(new Vector3(4.075350237500928,4.833801528609148,-2.187800737523783), -1, 1),
-         new Particle(new Vector3(4.342427159232962,4.9799714873239544,4.4302788597549405), -1, 1),
-         new Particle(new Vector3(2.7775878142603094,3.0304330438035225,-3.410322063669639), -1, 1),
-         new Particle(new Vector3(-2.119657671184083,2.556060776787863,-2.8071947663585766), -1, 1),
-         new Particle(new Vector3(4.1850114122750925,4.735447382481818,-2.70058368078442), -1, 1),
-         new Particle(new Vector3(3.68060212647632,-3.954278925614492,2.5315026978249686), -1, 1),
-         new Particle(new Vector3(3.199857034035543,-2.8076525393431813,-4.536474711805448), -1, 1),
+         new Particle(new Vector3(-11,0,0), -1, 1),
+         new Particle(new Vector3(11,0,0), -1, 1),
+         // new Particle(new Vector3(0,3,0), -1, 1),
+//          new Particle(new Vector3(0,-3,0), -1, 1),
+//          new Particle(new Vector3(0,0,3), -1, 1),
       };
    // private Particle[] particles= {
 //          //A bunch of cool protons
