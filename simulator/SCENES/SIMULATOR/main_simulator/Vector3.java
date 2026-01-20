@@ -21,6 +21,10 @@ public class Vector3
       return new Vector3(a.x - b.x, a.y - b.y, a.z - b.z);
    }
    
+   public static double dot(Vector3 a, Vector3 b){
+      return a.x * b.x + a.y * b.y + a.z * b.z;
+   }
+   
    public Vector3 scale(double k){
       return new Vector3(k * x, k * y, k * z);
    }

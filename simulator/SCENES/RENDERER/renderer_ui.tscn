@@ -20,6 +20,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 87.0
+offset_bottom = 48.0
+text = "BACK"
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
 anchors_preset = 6
@@ -83,14 +91,14 @@ scrollable = false
 tick_count = 10
 ticks_position = 3
 
-[node name="PlayButton" type="Button" parent="."]
+[node name="PlayButton" type="CheckButton" parent="."]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 220.0
-offset_right = 128.0
-offset_bottom = 271.0
-toggle_mode = true
-text = ">"
+offset_left = 63.0
+offset_top = 224.0
+offset_right = 157.0
+offset_bottom = 281.0
+text = "Play Button "
 
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="FileDialogButton" to="." method="_on_file_dialog_button_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

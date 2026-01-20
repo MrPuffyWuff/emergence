@@ -1,5 +1,6 @@
 extends Control
 
+var MAIN_MENU = load("res://SCENES/MAIN/main_menu.tscn")
 const PARTICLE = preload("uid://dqr2y6q64nni2")
 
 var current_file : String = ""
@@ -20,6 +21,9 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
+	if $PlayButton.button_pressed:
+		$FrameSlider.value += 1
+		
 	render_frames(delta)
 
 func render_frames(delta : float):
@@ -30,9 +34,6 @@ func render_frames(delta : float):
 	if cur_frame != prev_frame:
 		prev_frame = cur_frame
 		display_frame(cur_frame)
-	
-	if $PlayButton.button_pressed:
-		$FrameSlider.value += delta
 
 func _on_file_dialog_button_pressed() -> void:
 	$FileDialog.popup()
@@ -56,7 +57,11 @@ func display_frame(frame : int):
 		if charge in p.colors:
 			p.cur_color = p.colors[float(p_parts[3])]
 		else:
-			p.cur_color = Color(1.0, 0.0, 0.0, 1.0)
+			p.cur_color = Color(2.0, 0.0, 0.0, 1.0)
+		if p_parts.size() >= 5:
+			var is_quantum : String = p_parts[4]
+			if is_quantum == 'true':
+				p.cur_color = Color(0.0, 2.0, 0.0, 1.0)
 
 func initial_content_scrape():
 	frames = content.split("\n")
@@ -75,3 +80,7 @@ func initial_content_scrape():
 	$FrameSlider.max_value = len(frames) - 2
 	can_render = true
 	display_frame(0)
+
+
+func _on_back_button_pressed() -> void:
+	SceneSwitcher.goto_scene(MAIN_MENU)

@@ -7,6 +7,7 @@ public class Particle
    private Vector3 position;//Bhor's Radii
    private int charge;//Pranav's
    private double mass;//EM's
+   private boolean isQuantum;
    
    public Particle(Vector3 poz, int chargeI, double massI)
    {
@@ -14,6 +15,7 @@ public class Particle
       charge = chargeI;
       mass = massI;
       velocity = new Vector3(0, 0, 0);
+      isQuantum = false;
    }
    
    public Particle(Vector3 poz, Vector3 vel, int chargeI, double massI)
@@ -22,6 +24,7 @@ public class Particle
       charge = chargeI;
       mass = massI;
       velocity = vel;
+      isQuantum = false;
    }
    
    public int getCharge(){
@@ -40,6 +43,10 @@ public class Particle
       return position;
    }
    
+   public boolean getIsQuantum(){
+      return isQuantum;
+   }
+   
    public void setVelocity(Vector3 iVel){
       velocity = iVel;
    }
@@ -48,9 +55,13 @@ public class Particle
       position = iPoz;
    }
    
+   public void setIsQuantum(boolean iIsQuantum){
+      isQuantum = iIsQuantum;
+   }
+   
    public String toString()
    {
-      return position + "_" + velocity + "_" + mass + "_" + charge;
+      return position + "_" + velocity + "_" + mass + "_" + charge + "_" + isQuantum;
    }
 
 }

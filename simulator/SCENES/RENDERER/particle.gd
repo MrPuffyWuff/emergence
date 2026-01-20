@@ -6,7 +6,7 @@ var rng = RandomNumberGenerator.new()
 
 var colors : Dictionary[float, Color] = {
 	0.0 : Color(0.461, 0.461, 0.461, 1.0),
-	-1.0 : Color(0.421, 0.558, 0.719, 1.0)
+	-1.0 : Color(0.0, 0.0, 2.0, 1.0)
 }
 
 var cur_color : Color = colors[0]
