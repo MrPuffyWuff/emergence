@@ -37,12 +37,14 @@ func render_frames(delta : float):
 
 func _on_file_dialog_button_pressed() -> void:
 	$FileDialog.popup()
+	$FileDialog.add_filter("*.psm")
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	var file = FileAccess.open(path, FileAccess.READ)
 	content = file.get_as_text()
 	current_file = path
 	$FileDialogButton/CurrentFileLabel.text = "Current File Open: " + current_file
+	$FrameSlider.value = 0
 	initial_content_scrape()
 
 func display_frame(frame : int):

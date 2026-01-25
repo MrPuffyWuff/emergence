@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c381td3d0x4m8"]
+[gd_scene load_steps=3 format=3 uid="uid://c381td3d0x4m8"]
 
 [ext_resource type="Script" uid="uid://xx2oc8baspcn" path="res://SCENES/SIMULATOR/simulator_ui.gd" id="1_c73p0"]
 [ext_resource type="PackedScene" uid="uid://chv8hq1tk7hpj" path="res://SCENES/SIMULATOR/sim_viewer.tscn" id="1_tduv5"]
-[ext_resource type="PackedScene" uid="uid://cc0nvyvk2j0p3" path="res://SCENES/SIMULATOR/simulator.tscn" id="3_q2onl"]
 
 [node name="SimulatorUi" type="Control"]
 layout_mode = 3
@@ -23,9 +22,9 @@ grow_vertical = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 0
-offset_left = 806.0
+offset_left = 825.0
 offset_top = 59.0
-offset_right = 1847.0
+offset_right = 1866.0
 offset_bottom = 1003.0
 stretch = true
 
@@ -38,20 +37,220 @@ render_target_update_mode = 4
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 14.0
-offset_right = 115.0
-offset_bottom = 73.0
+offset_left = 30.0
+offset_top = 29.0
+offset_right = 120.0
+offset_bottom = 88.0
+focus_mode = 0
 text = "BACK"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="SelectionPanel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 45.0
-offset_top = 499.0
-offset_right = 740.0
-offset_bottom = 835.0
+offset_left = 30.0
+offset_top = 120.0
+offset_right = 780.0
+offset_bottom = 420.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+[node name="ProtonButton" type="Button" parent="SelectionPanel"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 50.0
+focus_mode = 0
+text = "Add Proton"
+
+[node name="NeutronButton" type="Button" parent="SelectionPanel"]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 500.0
+offset_bottom = 50.0
+focus_mode = 0
+text = "Add Neutron"
+
+[node name="ElectronButton" type="Button" parent="SelectionPanel"]
+layout_mode = 0
+offset_left = 500.0
+offset_right = 750.0
+offset_bottom = 50.0
+focus_mode = 0
+text = "Add Electron"
+
+[node name="MassInput" type="Control" parent="SelectionPanel"]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 140.0
+offset_right = 60.0
+offset_bottom = 180.0
+
+[node name="Label" type="Label" parent="SelectionPanel/MassInput"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 35.0
+text = "Mass: "
+vertical_alignment = 1
+
+[node name="FloatInput" type="SpinBox" parent="SelectionPanel/MassInput"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 250.0
+offset_bottom = 35.0
+max_value = 100000000.0
+step = 0.01
+
+[node name="ChargeInput" type="Control" parent="SelectionPanel"]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 175.0
+offset_right = 60.0
+offset_bottom = 215.0
+
+[node name="Label" type="Label" parent="SelectionPanel/ChargeInput"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 35.0
+text = "Charge: "
+vertical_alignment = 1
+
+[node name="IntInput" type="SpinBox" parent="SelectionPanel/ChargeInput"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 250.0
+offset_bottom = 35.0
+max_value = 100000000.0
+
+[node name="PositionInput" type="Control" parent="SelectionPanel"]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 210.0
+offset_right = 60.0
+offset_bottom = 250.0
+
+[node name="Label" type="Label" parent="SelectionPanel/PositionInput"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 35.0
+text = "Position: "
+vertical_alignment = 1
+
+[node name="XInput" type="SpinBox" parent="SelectionPanel/PositionInput"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 250.0
+offset_bottom = 35.0
+max_value = 100000000.0
+
+[node name="YInput" type="SpinBox" parent="SelectionPanel/PositionInput"]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 400.0
+offset_bottom = 35.0
+max_value = 100000000.0
+
+[node name="ZInput" type="SpinBox" parent="SelectionPanel/PositionInput"]
+layout_mode = 0
+offset_left = 400.0
+offset_right = 550.0
+offset_bottom = 35.0
+max_value = 100000000.0
+
+[node name="VelocityInput" type="Control" parent="SelectionPanel"]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 245.0
+offset_right = 60.0
+offset_bottom = 285.0
+
+[node name="Label" type="Label" parent="SelectionPanel/VelocityInput"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 35.0
+text = "Velocity: "
+vertical_alignment = 1
+
+[node name="XInput" type="SpinBox" parent="SelectionPanel/VelocityInput"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 250.0
+offset_bottom = 35.0
+max_value = 100000000.0
+
+[node name="YInput" type="SpinBox" parent="SelectionPanel/VelocityInput"]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 400.0
+offset_bottom = 35.0
+max_value = 100000000.0
+
+[node name="ZInput" type="SpinBox" parent="SelectionPanel/VelocityInput"]
+layout_mode = 0
+offset_left = 400.0
+offset_right = 550.0
+offset_bottom = 35.0
+max_value = 100000000.0
+
+[node name="Preview" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = -83.0
+offset_right = 780.0
+offset_bottom = 134.0
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Preview"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "PREVIEW:"
+
+[node name="Content" type="Label" parent="Preview"]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 40.0
+offset_bottom = 46.0
+text = "NONE TYPE - osapdkdsaopkas"
+
+[node name="AddButton" type="Button" parent="Preview"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -55.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+text = "ADD"
+
+[node name="ResetButton" type="Button" parent="Preview"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -55.0
+offset_right = -120.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+text = "RESET"
+
+[node name="FinalAtomList" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 711.0
+offset_right = 780.0
+offset_bottom = 922.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="FinalAtomList"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,14 +258,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VScrollBar" type="VBoxContainer" parent="Panel/ScrollContainer"]
+[node name="VScrollBar" type="VBoxContainer" parent="FinalAtomList/ScrollContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/VScrollBar"]
+[node name="Label" type="Label" parent="FinalAtomList/ScrollContainer/VScrollBar"]
 layout_mode = 2
 text = "Placed Atoms"
 
 [node name="MenuBar" type="MenuBar" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 26.0
 offset_top = 103.0
@@ -74,11 +274,12 @@ offset_right = 759.0
 offset_bottom = 423.0
 
 [node name="TabContainer" type="TabContainer" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 29.0
-offset_top = 136.0
-offset_right = 606.0
-offset_bottom = 448.0
+offset_left = 30.0
+offset_top = 111.0
+offset_right = 775.0
+offset_bottom = 423.0
 current_tab = 1
 
 [node name="Elements" type="GridContainer" parent="TabContainer"]
@@ -113,13 +314,13 @@ step = 0.0
 
 [node name="SimulateButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 896.0
-offset_right = 141.0
-offset_bottom = 958.0
+offset_left = 30.0
+offset_top = 983.0
+offset_right = 151.0
+offset_bottom = 1045.0
+focus_mode = 0
 text = "SIMULATE"
 
-[node name="Simulator" parent="." instance=ExtResource("3_q2onl")]
-
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Preview/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="SimulateButton" to="." method="_on_simulate_button_pressed"]

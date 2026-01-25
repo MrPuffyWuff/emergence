@@ -10,7 +10,7 @@ script = ExtResource("1_554wj")
 
 [node name="Particles" type="Node3D" parent="."]
 
-[node name="CameraPivot" type="Node3D" parent="."]
+[node name="CameraPivot" type="CharacterBody3D" parent="."]
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
 

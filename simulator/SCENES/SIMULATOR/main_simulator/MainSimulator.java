@@ -13,6 +13,7 @@ public class MainSimulator
    
    private double time_step;
    
+   private String filename;
    
    /*
    -4.628479065018875,3.850784975503889,-3.002066964447845
@@ -103,11 +104,12 @@ public class MainSimulator
       //Save initial frame
       isSimulationRunning = true;
       frame = 0;
-      time_step = 0.01/1000;
+      time_step = 0.01/10;
       totalFrames = 8000*2;
       output = "Simulation_ID-0_NAME-TEST\n";
       output += "Particle Count: " + particles.length + "\n";
       //particles = new Particle[0];
+      filename = "untitled_sim.psm";
       saveFrame();
    }
    
@@ -139,7 +141,7 @@ public class MainSimulator
             isSimulationRunning = false;
             System.out.println("Simulation Complete. Saving...");
             try {
-               FileWriter myWriter = new FileWriter("filename.txt");
+               FileWriter myWriter = new FileWriter("C:\\Users\\jaspe\\Documents\\Github_Local\\emergence\\simulator\\demo_simulations\\" + filename);
                myWriter.write(output);
                myWriter.close();  // must close manually
                System.out.println("Simulation Result Saved");

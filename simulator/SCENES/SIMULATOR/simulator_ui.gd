@@ -2,14 +2,30 @@ extends Control
 
 var MAIN_MENU = load("res://SCENES/MAIN/main_menu.tscn")
 
+var cur_mass : float = 0.0
+var cur_charge : int = 0.0
+var cur_position : Vector3 = Vector3.ZERO
+var cur_velocity : Vector3 = Vector3.ZERO
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	instantiate_element_buttons()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	cur_mass = $SelectionPanel/MassInput/FloatInput.value
+	cur_charge = $SelectionPanel/ChargeInput/IntInput.value
+	cur_position = Vector3(
+		$SelectionPanel/PositionInput/XInput.value,
+		$SelectionPanel/PositionInput/YInput.value,
+		$SelectionPanel/PositionInput/ZInput.value,
+	)
+	cur_velocity = Vector3(
+		$SelectionPanel/VelocityInput/XInput.value,
+		$SelectionPanel/VelocityInput/YInput.value,
+		$SelectionPanel/VelocityInput/ZInput.value,
+	)
+	$Preview/Content.text = "Mass: " + str(cur_mass) + "\nCharge: " + str(cur_charge) + "\nPosition: " + str(cur_position) + "\nVelocity: " + str(cur_velocity)
 
 func instantiate_element_buttons():
 	var elements : GridContainer = $TabContainer/Elements
@@ -41,6 +57,19 @@ func make_spacer(min_size : Vector2) -> Variant:
 func _on_back_button_pressed() -> void:
 	SceneSwitcher.goto_scene(MAIN_MENU)
 
-
 func _on_simulate_button_pressed() -> void:
-	$Simulator.running_simulation = true
+	pass
+
+func _on_reset_button_pressed() -> void:
+	cur_mass = 0.0
+	cur_charge = 0.0
+	cur_position = Vector3.ZERO
+	cur_velocity = Vector3.ZERO
+	$SelectionPanel/MassInput/FloatInput.value = 0
+	$SelectionPanel/ChargeInput/IntInput.value = 0
+	$SelectionPanel/PositionInput/XInput.value = 0
+	$SelectionPanel/PositionInput/YInput.value = 0
+	$SelectionPanel/PositionInput/ZInput.value = 0
+	$SelectionPanel/VelocityInput/XInput.value = 0
+	$SelectionPanel/VelocityInput/YInput.value = 0
+	$SelectionPanel/VelocityInput/ZInput.value = 0
